@@ -1,6 +1,7 @@
-import Header from "./Header";
+import Header from "../Header/Header";
 import React from "react";
-import LayoutContent from "./LayoutContent";
+import LayoutContent from "../LayoutContent/LayoutContent";
+import Footer from "../Footer/Footer";
 
 function LayoutMain() {
   return (
@@ -8,6 +9,7 @@ function LayoutMain() {
       <Header />
 
       <LayoutContent />
+      <Footer />
     </>
   );
 }

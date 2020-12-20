@@ -1,0 +1,22 @@
+@import "./../../../scss/constants.scss";
+
+.appFooter {
+  margin-top: 24px;
+}
+
+.footerWrapper {
+  background-color: $color-primary;
+  padding-top: 30px;
+  padding-bottom: 25px;
+}
+
+.bottomBarFooter {
+  background-color: $color-primary-darker;
+  padding: 12px 0px;
+}
+
+.bottomBarContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px;
+}

@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import styles from "./styles.module.scss";
 
 interface Props {
   /**
@@ -18,20 +19,20 @@ interface Props {
 
 export default function Header(props: Props) {
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
 
       <AppBar>
         <Container maxWidth="lg">
-          <Toolbar>
-            <Typography variant="h6">Scroll to Elevate App Bar</Typography>
-          </Toolbar>
+          <Typography variant="h6">Scroll to Elevate App Bar</Typography>
+
+          {/* <Toolbar>
+           
+          </Toolbar> */}
         </Container>
       </AppBar>
 
       <Toolbar />
-
-      {/* <Box my={2}>TEST</Box> */}
-    </React.Fragment>
+    </>
   );
 }
