@@ -1,39 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { auth } from "../../Firebase/firebase.config";
 import { observer } from "mobx-react";
-import InputField from "../../components/shared/InputField";
+import AdminDashboard from "../AdminDashboard";
+import AdminLogin from "../AdminLogin";
+import useAdmin from "../../hooks/useAdmin";
+import Loading from "../../components/shared/Loading";
 
-import { AdminStoreImpl } from "../../Store/AdminStore";
+const AdminAuth: React.FC = () => {
+  const ctx = useAdmin();
 
-interface AdminStoreProps {
-  adminStore: AdminStoreImpl;
-}
+  useEffect(() => {
+    ctx.setIsLoading(true);
 
-const AdminAuth: React.FC<AdminStoreProps> = ({ adminStore }) => {
-  console.log("BAZA", JSON.stringify(adminStore));
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        ctx.isAuth = true;
+        ctx.setUser(user);
+      } else {
+        ctx.isAuth = false;
+        ctx.setUser(null);
+      }
+    });
+    ctx.setIsLoading(false);
+    return unsubscribe;
+  }, []);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  if (ctx.isLoading) {
+    return <Loading />;
+  }
 
   return (
-    <>
-      <InputField
-        value={email}
-        handleChange={(e: any) => setEmail(e.target.value)}
-      />
-      <InputField
-        value={password}
-        handleChange={(e: any) => setPassword(e.target.value)}
-      />
-
-      <button
-        onClick={() => {
-          console.log(email, password);
-          adminStore.login();
-        }}
-      >
-        Login
-      </button>
-    </>
+    <>{!ctx.isAuth && !ctx.isLoading ? <AdminLogin /> : <AdminDashboard />}</>
   );
 };
 

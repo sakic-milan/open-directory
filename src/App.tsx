@@ -1,10 +1,13 @@
 import React from "react";
-import LayoutMain from "./components/layout/LayoutMain/LayoutMain";
 import AdminAuth from "./pages/AdminAuth/";
-import { AdminStore } from "./Store/AdminStore";
+import { AdminProvider } from "./Store/AdminContext";
 
 function App() {
-  return <AdminAuth adminStore={AdminStore} />;
+  return (
+    <AdminProvider>
+      <AdminAuth />
+    </AdminProvider>
+  );
 
   // <LayoutMain />
 }
