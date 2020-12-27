@@ -37,7 +37,7 @@ export class AdminStoreImpl {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {})
-      .catch((error) => alert(error))
+      .catch((error) => {})
       .finally(() => {
         this.isLoading = false;
       });

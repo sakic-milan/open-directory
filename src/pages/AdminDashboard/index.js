@@ -8,7 +8,6 @@ import useAdmin from "../../hooks/useAdmin";
 const AdminDashboard = () => {
   const ctx = useAdmin();
 
-  document.body.style.display = "";
   return (
     <div>
       Welcome to Admin Dashboard
